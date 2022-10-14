@@ -4,16 +4,44 @@ import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import "./index.css";
+import Layout from "./pages/Layout";
+import ErrorPage from "./pages/Error";
+import Main from "./pages/Main";
+import Voting from "./pages/Voting";
+import Utilities from "./pages/Utilities";
+
+const router = createBrowserRouter([
+  {
+    path: "",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Main />,
+      },
+      {
+        path: "/voting",
+        element: <Voting />,
+      },
+      {
+        path: "/utilities",
+        element: <Utilities />,
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

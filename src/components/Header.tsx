@@ -1,17 +1,24 @@
+import { Link, NavLink } from "react-router-dom";
+
 const Header = () => (
   <header className="masthead mb-auto">
     <div className="inner">
-      <h3 className="masthead-brand">VotingDapp</h3>
+      <h3 className="masthead-brand">
+        {" "}
+        <Link className="nav-link" to="/">
+          VotingDapp
+        </Link>
+      </h3>
       <nav className="nav nav-masthead justify-content-center">
-        <a className="nav-link active" href="/">
+        <NavLink className="nav-link" to="/">
           Home
-        </a>
-        <a className="nav-link" href="/voting">
+        </NavLink>
+        <NavLink className="nav-link" to="/voting">
           Voting
-        </a>
-        <a className="nav-link" href="/utilities">
+        </NavLink>
+        <NavLink className="nav-link" to="/utilities">
           Utilities
-        </a>
+        </NavLink>
       </nav>
     </div>
   </header>
