@@ -8,6 +8,15 @@ async function bootstrap() {
     logger: ['debug'],
   });
 
+  const corsOptions = {
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preFlightContinue: false,
+    optionsSuccessStatus: 204,
+    credentials: true,
+    allowedHeaders: 'Content-Type, Accept, Authorization'
+  }
+  app.enableCors(corsOptions);
   const config = new DocumentBuilder()
   .setTitle('Vote API')
   .setDescription('The vote API description')
