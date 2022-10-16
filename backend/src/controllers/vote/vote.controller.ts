@@ -1,5 +1,5 @@
-import { Controller, Get } from '@nestjs/common';
-import { VoteService } from 'src/services/vote/vote.service';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { ClaimVotingToken, VoteService } from 'src/services/vote/vote.service';
 import { Logger as log } from '@nestjs/common';
 
 @Controller()
@@ -12,5 +12,11 @@ export class VoteController {
     return {
       result:this.voteService.getTokenAddress()
     };
+  }
+
+  @Post("claim-tokens")
+  claimVotingTokens(@Body() claim: ClaimVotingToken) {
+    log.log(`claim voting tokens ${claim}`);
+    this.voteService.claimVotingToken(claim);
   }
 }
