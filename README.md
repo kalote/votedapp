@@ -6,5 +6,5 @@ yarn install
 npx hardhat compile
 npx hardhat node
 cd scripts
-npx hardhat run deploy.ts
+npx hardhat token
 ```
